@@ -1,0 +1,2 @@
+,Defect,Initial f1 score,Initial accuracy,Initial recall,Best dev f1_score,Dev accuracy,Dev recall,Best dev parameter list,Test accuracy,Test recall,Test f1
+0,Drainage,0.1598233995584989,0.7669891024856128,0.7298387096774194,0.7819905213270142,0.7817319098457889,0.7875894988066826,"(3, 125, 75, 6, 2, 15, 25, 75, 6, -4, 7, 16, 100, 3, 11, 70, 20, 70)",0.7622137871923595,0.6814516129032258,0.14824561403508774

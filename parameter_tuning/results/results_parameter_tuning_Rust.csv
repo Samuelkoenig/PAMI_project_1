@@ -1,0 +1,2 @@
+,Defect,Initial f1 score,Initial accuracy,Initial recall,Best dev f1_score,Dev accuracy,Dev recall,Best dev parameter list,Test accuracy,Test recall,Test f1
+0,Rust,0.6557445914723797,0.7993143137014815,0.828996282527881,0.8148621041879468,0.8117616513046865,0.825614489003881,"(3, 25, 50, 6, 2, 15, 25, 100, 6, -4, 20, 20, 100, 3, 6, 30, 10, 60)",0.7945389984082283,0.8204992033988316,0.6480704697986577
