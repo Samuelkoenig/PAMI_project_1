@@ -276,18 +276,19 @@ class ReinforcementAgent():
 
         self.optimizer = torch.optim.Adam(self.net.parameters(),lr=0.01)
 
-        self.exploration_chance = 0.3
+        self.initial_exploration_chance = 0.5
         self.statesize = env.statesize
 
-    def step(self, state):
+    def step(self, state, epoch, epochs):
 
         action = self.net.forward(state.parameter_tensor)
         #print(action)
         action = action.tolist()
         
         # Exploration adjustements:
+        exploration_chance = self.initial_exploration_chance * (((epochs - 1) - epoch) / (epochs - 1))
         for i in range(self.statesize):
-            if random.random() < self.exploration_chance:
+            if random.random() < exploration_chance:
                 action[i] = random.random()
         
         return action
@@ -346,7 +347,7 @@ def train_agent(classifier, initial_parameter_list=None, epochs=20, directory=No
 
         print(f"Epoch {i}")
         
-        action = agent.step(state)
+        action = agent.step(state, i, epochs)
         #print(action)
         next_state, reward = env.step(action)
         agent.update(reward)

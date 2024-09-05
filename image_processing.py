@@ -191,7 +191,10 @@ def extract_lengthy_features_1(edges, defect_polygon):
 
     # Create defect polygon and calculate its width and height:
     defect_polygon = Polygon(defect_polygon)
-    defect_rect_coords = np.array(list(defect_polygon.minimum_rotated_rectangle.exterior.coords)[:-1])
+    try:
+        defect_rect_coords = np.array(list(defect_polygon.minimum_rotated_rectangle.exterior.coords)[:-1])
+    except: 
+        return 0, 0, 0
     distances = [np.linalg.norm(defect_rect_coords[i] - defect_rect_coords[(i + 1) % len(defect_rect_coords)]) for i in range(len(defect_rect_coords))]
     defect_width, defect_height = sorted(distances)[0], sorted(distances)[-1]
 
@@ -602,9 +605,9 @@ class Dataset():
         def process_images_parallel(self, start, end):
 
             samples = []
-            batch_size = 1000
+            batch_size = 100
             
-            with concurrent.futures.ProcessPoolExecutor(max_workers=os.cpu_count() * 2) as executor:
+            with concurrent.futures.ProcessPoolExecutor(max_workers=os.cpu_count()) as executor:
 
                 for k in range(math.ceil((end - start) / batch_size)):
                     image_numbers = [start + batch_size * k + i for i in range(batch_size) if batch_size * k + i < (end - start)]
