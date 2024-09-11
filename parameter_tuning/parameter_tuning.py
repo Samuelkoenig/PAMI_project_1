@@ -136,7 +136,7 @@ class ClassificationModel():
         print(f"Parameter list: {parameter_combination}, \nAccuracy: {accuracy}, \nRecall: {recall}, \nF1: {f1}\n")
         return accuracy, recall, f1, clf
 
-    def test(self, parameter_list, clf):
+    def test(self, parameter_list, clf, balanced_sampling=False):
 
         # Load and prepare validation dataset
         df = Dataset.new(dataset_type="validation", features_list=self.features, parameter_list=parameter_list, resolution=self.resolution).data
@@ -144,6 +144,8 @@ class ClassificationModel():
         labels = df["label"]
         df.dropna(inplace = True)
         df["target_label"] = df["label"].apply(lambda x: 1 if x == self.target_label else 0)
+        if balanced_sampling == True:
+            df = self.balanced_sampling(df)
         x_test, y_test = df.loc[:, self.all_features], df.loc[:, "target_label"]
         x_test, _ = self.select_features(self.features, x_test, x_test)
 
@@ -404,13 +406,13 @@ def parameter_tuning_experiment(defect_type, defect_features, epochs):
     # Perform classification with initial parameter list
     defect_classifier = ClassificationModel(defect_type, features=defect_features)
     _, _, _, initial_clf = defect_classifier.run(initial_parameter_list)
-    initial_accuracy, initial_recall, initial_f1, _, _ = defect_classifier.test(initial_parameter_list, initial_clf)
+    initial_accuracy, initial_recall, initial_f1, _, _ = defect_classifier.test(initial_parameter_list, initial_clf, balanced_sampling=True)
 
     # Perform reinforcement learning 
     best_dev_parameter_list, best_dev_f1_score, dev_accuracy, dev_recall, best_dev_clf = train_agent(
         defect_classifier, initial_parameter_list=initial_parameter_list, epochs=epochs, 
         directory=f"parameter_tuning/results/results_parameter_tuning_{defect_type}.png")
-    test_accuracy, test_recall, test_f1, _, _ = defect_classifier.test(best_dev_parameter_list, best_dev_clf)
+    test_accuracy, test_recall, test_f1, _, _ = defect_classifier.test(best_dev_parameter_list, best_dev_clf, balanced_sampling=True)
 
     # Save results
     df = pd.DataFrame({"Defect": [defect_type], "Initial f1 score": [initial_f1], "Initial accuracy": [initial_accuracy], 
@@ -438,7 +440,7 @@ def parameter_tuning_rust(return_features=False):
     if return_features == True: 
         return rust_features
 
-    parameter_tuning_experiment("Rust", rust_features, epochs=30)
+    parameter_tuning_experiment("Rust", rust_features, epochs=25)
 
 def parameter_tuning_drainage(return_features=False):
     
@@ -452,7 +454,7 @@ def parameter_tuning_drainage(return_features=False):
     if return_features == True: 
         return drainage_features
     
-    parameter_tuning_experiment("Drainage", drainage_features, epochs=30)
+    parameter_tuning_experiment("Drainage", drainage_features, epochs=25)
 
 def parameter_tuning_graffiti(return_features=False):
     
@@ -466,7 +468,7 @@ def parameter_tuning_graffiti(return_features=False):
     if return_features == True: 
         return graffiti_features
     
-    parameter_tuning_experiment("Graffiti", graffiti_features, epochs=30)
+    parameter_tuning_experiment("Graffiti", graffiti_features, epochs=25)
 
 def parameter_tuning_exposed_rebars(return_features=False):
     
@@ -480,7 +482,7 @@ def parameter_tuning_exposed_rebars(return_features=False):
     if return_features == True: 
         return exposed_rebars_features
     
-    parameter_tuning_experiment("ExposedRebars", exposed_rebars_features, epochs=30)
+    parameter_tuning_experiment("ExposedRebars", exposed_rebars_features, epochs=25)
 
 def parameter_tuning_wetspot(return_features=False):
     
@@ -494,7 +496,7 @@ def parameter_tuning_wetspot(return_features=False):
     if return_features == True: 
         return wetspot_features
     
-    parameter_tuning_experiment("Wetspot", wetspot_features, epochs=30)
+    parameter_tuning_experiment("Wetspot", wetspot_features, epochs=25)
 
 def parameter_tuning_crack(return_features=False):
     
@@ -508,7 +510,7 @@ def parameter_tuning_crack(return_features=False):
     if return_features == True: 
         return crack_features
     
-    parameter_tuning_experiment("Crack", crack_features, epochs=30)
+    parameter_tuning_experiment("Crack", crack_features, epochs=25)
 
 
 if __name__ == "__main__":

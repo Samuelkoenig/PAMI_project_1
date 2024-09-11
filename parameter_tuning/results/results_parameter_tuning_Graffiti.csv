@@ -1,2 +1,0 @@
-,Defect,Initial f1 score,Initial accuracy,Initial recall,Best dev f1_score,Dev accuracy,Dev recall,Best dev parameter list,Test accuracy,Test recall,Test f1
-0,Graffiti,0.199660152931181,0.7693155381413004,0.734375,0.7685512367491165,0.7677304964539007,0.7461406518010292,"(15, 25, 75, 15, -1, 5, 25, 50, 8, -4, 18, 20, 100, 3, 5, 30, 10, 60)",0.7664993265580997,0.7375,0.1984026902059689

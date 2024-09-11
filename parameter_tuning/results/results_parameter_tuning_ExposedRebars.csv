@@ -1,2 +1,0 @@
-,Defect,Initial f1 score,Initial accuracy,Initial recall,Best dev f1_score,Dev accuracy,Dev recall,Best dev parameter list,Test accuracy,Test recall,Test f1
-0,ExposedRebars,0.20930232558139536,0.8084976123423534,0.8380566801619433,0.868705035971223,0.8612167300380228,0.8829981718464351,"(3, 25, 50, 7, 2, 15, 25, 150, 10, -3, 20, 20, 100, 3, 9, 30, 10, 65)",0.804946736867883,0.8218623481781376,0.2031015507753877

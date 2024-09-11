@@ -85,7 +85,7 @@ class CrossClassificationModel():
         
         for defect in self.relevant_features.keys():
             classifier = ClassificationModel(defect, features=self.relevant_features[defect])
-            _, _, _, probs, labels = classifier.test(self.parameter_lists[defect], self.classifiers[defect])
+            _, _, _, probs, labels = classifier.test(self.parameter_lists[defect], self.classifiers[defect], balanced_sampling=False)
             predictions[defect] = probs
 
         predictions = pd.DataFrame(predictions)
