@@ -1,0 +1,2 @@
+,Defect,Initial f1 score,Initial accuracy,Initial recall,Best dev f1_score,Dev accuracy,Dev recall,Best dev parameter list,Test accuracy,Test recall,Test f1
+0,Wetspot,0.7629796839729119,0.7591743119266054,0.7752293577981652,0.8,0.7863741339491916,0.8295964125560538,"(3, 125, 50, 6, 2, 15, 25, 50, 13, -4, 16, 20, 120, 4, 6, 30, 20, 70)",0.7706422018348624,0.7844036697247706,0.7737556561085972
