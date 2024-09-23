@@ -515,9 +515,9 @@ def parameter_tuning_crack(return_features=False):
 
 if __name__ == "__main__":
 
-    #parameter_tuning_rust()
-    #parameter_tuning_drainage()
-    #parameter_tuning_graffiti()
-    #parameter_tuning_exposed_rebars()
-    #parameter_tuning_wetspot()
+    parameter_tuning_rust()
+    parameter_tuning_drainage()
+    parameter_tuning_graffiti()
+    parameter_tuning_exposed_rebars()
+    parameter_tuning_wetspot()
     parameter_tuning_crack()
