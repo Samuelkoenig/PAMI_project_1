@@ -31,10 +31,10 @@
 
 ## Components
 
-| File                                                         | Purpose                                                                            |
-| ------------------------------------------------------------ | ---------------------------------------------------------------------------------- |
-| image_processing.py                                          | Python file to generate the dataset from the raw input images and annotations.     |
-| feature_selection/feature_selection.ipynb                    | Jupyter Notebook to perform the feature selection.                                 |
-| parameter_tuning/parameter_tuning.py                         | Python file to perform the parameter tuning using binary classifications.          |
-| parameter_tuning/cross_classification.py                     | Python file to perform the parameter tuning using a combined classification.       |
-| multilabel_classification/multilabel_classification.ipynb    | Jupyter Notebook to train a multilabel classifier (not analyzed in final report).  |
+| File                                                      | Purpose                                                                             |
+| --------------------------------------------------------- | ----------------------------------------------------------------------------------- |
+| image_processing.py                                       | Python file to generate the dataset from the raw input images and annotations.      |
+| feature_selection/feature_selection.ipynb                 | Jupyter Notebook to perform the baseline classifications and the feature selection. |
+| parameter_tuning/parameter_tuning.py                      | Python file to perform the parameter tuning using binary classifications.           |
+| parameter_tuning/cross_classification.py                  | Python file to perform the parameter tuning using a combined classification.        |
+| multilabel_classification/multilabel_classification.ipynb | Jupyter Notebook to train a multilabel classifier (not analyzed in final report).   |
