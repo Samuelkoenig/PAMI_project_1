@@ -1,4 +1,4 @@
-# Automatic and Transparent Inspection Model
+# PAMI project 1: Automatic and Transparent Inspection Model
 
 ## Prerequisites
 
